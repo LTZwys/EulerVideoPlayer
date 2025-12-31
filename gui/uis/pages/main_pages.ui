@@ -132,7 +132,7 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Welcome To PyOneDark GUI</string>
+             <string>CSCC-UJS-Apps</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -396,7 +396,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>？？？？？？</string>
+            <string>ASR API ENDPOINT</string>
            </property>
           </widget>
          </item>
@@ -409,7 +409,7 @@ color: rgb(255, 255, 255);</string>
             </size>
            </property>
            <property name="text">
-            <string>？？？？？？</string>
+            <string>https://api.siliconflow.cn/v1/audio/transcriptions</string>
            </property>
           </widget>
          </item>
@@ -437,7 +437,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>？？？？？？</string>
+            <string>API KEY</string>
            </property>
           </widget>
          </item>
@@ -450,7 +450,7 @@ color: rgb(255, 255, 255);</string>
             </size>
            </property>
            <property name="text">
-            <string>?????????????</string>
+            <string>sk-</string>
            </property>
           </widget>
          </item>
@@ -478,7 +478,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>？？？？？？</string>
+            <string>MODEL NAME</string>
            </property>
           </widget>
          </item>
@@ -491,7 +491,7 @@ color: rgb(255, 255, 255);</string>
             </size>
            </property>
            <property name="text">
-            <string>????????????</string>
+            <string>TeleAI/TeleSpeechASR</string>
            </property>
           </widget>
          </item>
@@ -511,7 +511,7 @@ color: rgb(255, 255, 255);</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,4,0">
+        <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,0,0">
          <item>
           <widget class="QLabel" name="label_8">
            <property name="styleSheet">
@@ -519,54 +519,19 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>？？？？？？</string>
+            <string>REMOTE/LOCAL</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="PyToggle" name="checkBox">
            <property name="text">
-            <string>????????</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>200</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,4,0">
-         <item>
-          <widget class="QLabel" name="label_9">
-           <property name="styleSheet">
-            <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>？？？？？？</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="PyToggle" name="checkBox_2">
-           <property name="text">
-            <string>????????</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_5">
            <property name="orientation">
             <enum>Qt::Orientation::Horizontal</enum>
            </property>
