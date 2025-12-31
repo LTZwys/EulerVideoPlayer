@@ -1,11 +1,10 @@
 import os
 import time
 import tempfile
-from PySide6.QtCore import QObject, Signal, QThread
+from PySide6.QtCore import QObject, Signal
 from datetime import timedelta
 import whisper
 from opencc import OpenCC
-import mpv 
 import subprocess
 
 # 字幕生成

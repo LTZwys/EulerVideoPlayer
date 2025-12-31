@@ -1,14 +1,8 @@
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
-from gui.widgets.py_table_widget.py_table_widget import PyTableWidget
 
 from gui.uis.windows.main_window.functions_main_window import *
 
-from gui.widgets.py_plain_text_edit.py_plain_text_edit import  PyPlainTextEdit
-import tempfile
-from pathlib import Path
-import sys
-import os
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
