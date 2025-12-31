@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import tempfile
 from PySide6.QtCore import QObject, Signal
@@ -6,6 +7,7 @@ from datetime import timedelta
 import whisper
 from opencc import OpenCC
 import subprocess
+from tqdm import tqdm
 
 # 字幕生成
 # 音频切片，可以正常识别音频并输出分片字幕
@@ -45,8 +47,6 @@ class SubtitleWorker(QObject):
         self.progress.emit("模型加载完成", 10)
 
     def extract_audio_slice(self, start_time, duration, output_file):
-        print(start_time)
-        print(duration+start_time)
         cmd = [
             'ffmpeg',
             '-y',  # 覆盖已存在的文件
@@ -112,78 +112,88 @@ class SubtitleWorker(QObject):
 
             current_time = 0
             self.progress.emit("开始实时生成字幕...", 10)
-            while current_time < self.total_duration and self.is_running:
-                # 计算当前进度
-                progress_percent = int(10 + (current_time / self.total_duration) * 90)
-                self.progress.emit(f"正在识别 {current_time:.1f} - {current_time + self.slice_duration:.1f} 秒...", progress_percent)
+            
+            # 计算总切片数
+            total_slices = int(self.total_duration / self.slice_duration) + 1
+            
+            # 使用tqdm显示进度条（同时指定file和position避免重复）
+            with tqdm(total=total_slices, desc="字幕生成", unit="切片", ncols=100, file=sys.stdout, position=0) as pbar:
+                while current_time < self.total_duration and self.is_running:
+                    # 计算当前进度
+                    progress_percent = int(10 + (current_time / self.total_duration) * 90)
+                    self.progress.emit(f"正在识别 {current_time:.1f} - {current_time + self.slice_duration:.1f} 秒...", progress_percent)
 
-                # 创建临时音频切片文件
-                temp_fd, temp_audio = tempfile.mkstemp(suffix=".wav")
-                os.close(temp_fd)  # 关闭文件描述符
-                self.temp_files.append(temp_audio)
+                    # 创建临时音频切片文件
+                    temp_fd, temp_audio = tempfile.mkstemp(suffix=".wav")
+                    os.close(temp_fd)  # 关闭文件描述符
+                    self.temp_files.append(temp_audio)
 
-                # 提取当前时间段的音频切片
-                self.extract_audio_slice(current_time, self.slice_duration, temp_audio)
+                    # 提取当前时间段的音频切片
+                    self.extract_audio_slice(current_time, self.slice_duration, temp_audio)
 
-                # 检查切片文件是否有效
-                if not os.path.exists(temp_audio) or os.path.getsize(temp_audio) == 0:
+                    # 检查切片文件是否有效
+                    if not os.path.exists(temp_audio) or os.path.getsize(temp_audio) == 0:
+                        current_time += self.slice_duration
+                        continue
+
+                    # 识别切片音频
+                    result = self.model.transcribe(
+                        temp_audio,
+                        language="zh",
+                        verbose=None,  # 使用None完全禁用输出
+                        fp16=False,
+                        no_speech_threshold=0.1
+                    )
+
+                    # 解析识别结果并处理短片段合并
+                    if result["segments"]:
+                        for seg in result["segments"]:
+                            # 修正字幕时间（基于切片起始时间）
+                            seg_start = current_time + seg["start"]
+                            seg_end = current_time + seg["end"]
+                            seg_duration = seg_end - seg_start
+                            # 繁转简
+                            subtitle_text = self.converter.convert(seg["text"].strip())
+
+                            # 判断是否为短片段
+                            if seg_duration < self.short_segment_threshold:
+                                # 加入缓存
+                                self.short_segments_cache.append({
+                                    "start": seg_start,
+                                    "end": seg_end,
+                                    "text": subtitle_text
+                                })
+                            else:
+                                # 先合并缓存中的短片段
+                                self.merge_short_segments()
+                                # 直接写入长片段
+                                start_str = self.format_srt_time(seg_start)
+                                end_str = self.format_srt_time(seg_end)
+                                with open(self.srt_path, "a", encoding="utf-8") as f:
+                                    f.write(f"{self.subtitle_index}\n")
+                                    f.write(f"{start_str} --> {end_str}\n")
+                                    f.write(f"{subtitle_text}\n\n")
+                                self.subtitle_updated.emit(seg_start,seg_end,subtitle_text)
+                                self.subtitle_index += 1
+
+                    # 切片结束时，合并剩余的短片段
+                    self.merge_short_segments()
+                    # 推进时间轴
                     current_time += self.slice_duration
-                    continue
+                    time.sleep(0.1)
+                        
+                    # 更新进度条
+                    pbar.update(1)
+                    pbar.set_postfix_str(f"时间: {current_time:.1f}s")
 
-                # 识别切片音频
-                result = self.model.transcribe(
-                    temp_audio,
-                    language="zh",
-                    verbose=False,
-                    fp16=False,
-                    no_speech_threshold=0.1  
-                )
-
-                # 解析识别结果并处理短片段合并
-                if result["segments"]:
-                    for seg in result["segments"]:
-                        # 修正字幕时间（基于切片起始时间）
-                        seg_start = current_time + seg["start"]
-                        seg_end = current_time + seg["end"]
-                        seg_duration = seg_end - seg_start
-                        # 繁转简
-                        subtitle_text = self.converter.convert(seg["text"].strip())
-
-                        # 判断是否为短片段
-                        if seg_duration < self.short_segment_threshold:
-                            # 加入缓存
-                            self.short_segments_cache.append({
-                                "start": seg_start,
-                                "end": seg_end,
-                                "text": subtitle_text
-                            })
-                        else:
-                            # 先合并缓存中的短片段
-                            self.merge_short_segments()
-                            # 直接写入长片段
-                            start_str = self.format_srt_time(seg_start)
-                            end_str = self.format_srt_time(seg_end)
-                            with open(self.srt_path, "a", encoding="utf-8") as f:
-                                f.write(f"{self.subtitle_index}\n")
-                                f.write(f"{start_str} --> {end_str}\n")
-                                f.write(f"{subtitle_text}\n\n")
-                            self.subtitle_updated.emit(seg_start,seg_end,subtitle_text)
-                            self.subtitle_index += 1
-
-                # 切片结束时，合并剩余的短片段
+                # 最终合并所有剩余的短片段
                 self.merge_short_segments()
-                # 推进时间轴
-                current_time += self.slice_duration
-                time.sleep(0.1)
 
-            # 最终合并所有剩余的短片段
-            self.merge_short_segments()
-
-            if self.is_running:
-                self.progress.emit("实时字幕生成完成！", 100)
-                self.finished.emit(True, f"实时字幕已保存：{os.path.basename(self.srt_path)}")
-            else:
-                self.finished.emit(False, "用户终止了实时字幕生成")
+                if self.is_running:
+                    self.progress.emit("实时字幕生成完成！", 100)
+                    self.finished.emit(True, f"实时字幕已保存：{os.path.basename(self.srt_path)}")
+                else:
+                    self.finished.emit(False, "用户终止了实时字幕生成")
 
         except Exception as e:
             self.finished.emit(False, f"实时字幕生成失败：{str(e)}")

@@ -48,6 +48,7 @@ class SetupPageVideoPlayer(QObject):
         self.ui=None
         self.player_core=None
         self.is_dragging_progress=False
+        self.video_select_label = None  # 视频选择提示标签
         # SUBTITLE SETTINGS
         # ///////////////////////////////////////////////////////////////
         self.subtitle_worker = None  # 字幕生成线程
@@ -103,6 +104,28 @@ class SetupPageVideoPlayer(QObject):
         self.player_core=MPVPlayerCore()
         self.player_core.bind_to_window(self.ui.load_pages.video_widget.winId())
         self.ui.load_pages.video_widget.setToolTip("点击选择视频/音频文件播放")
+        
+        # 创建视频选择提示标签
+        self.video_select_label = QLabel(self.ui.load_pages.video_widget)
+        self.video_select_label.setObjectName("video_select_label")
+        self.video_select_label.setStyleSheet("""
+            QLabel {
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 18px;
+                background-color: rgba(60, 60, 60, 0.9);
+                border-radius: 12px;
+                padding: 30px;
+                border: 2px dashed rgba(255, 255, 255, 0.3);
+            }
+        """)
+        self.video_select_label.setText("🎬\n\n点击选择视频/音频文件播放\n\n支持格式: MP4, AVI, MKV, MOV, FLV, WMV, MP3, WAV, FLAC, AAC")
+        self.video_select_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.video_select_label.setWordWrap(True)
+        
+        # 将标签添加到video_widget的布局中
+        if self.ui.load_pages.video_widget.layout():
+            self.ui.load_pages.video_widget.layout().addWidget(self.video_select_label)
+        
         # self.player_core.set_progress_callback(self.progress_callback)
 
         self.volume_slider = PySlider(
@@ -334,9 +357,9 @@ class SetupPageVideoPlayer(QObject):
     def on_video_widget_click(self, event):
         if event.button() == Qt.LeftButton:
             file_path, _ = QFileDialog.getOpenFileName(
-                self.ui.load_pages.video_widget,  
-                "选择播放文件",  
-                os.path.expanduser("~"),  
+                self.ui.load_pages.video_widget,
+                "选择播放文件",
+                os.path.expanduser("~"),
                 "视频文件 (*.mp4 *.avi *.mkv *.mov *.flv *.wmv);;音频文件 (*.mp3 *.wav *.flac *.aac);;所有文件 (*.*)"
             )
             if file_path and os.path.exists(file_path):
@@ -344,10 +367,20 @@ class SetupPageVideoPlayer(QObject):
                 file_name = os.path.basename(file_path)
                 self.total_duration=self.player_core.get_duration()
                 self.ui.load_pages.video_widget.setToolTip(f"当前播放：{file_name}\n点击可更换文件")
-                #self.start_subtitle_worker(file_path)
+                
+                # 隐藏视频选择提示标签
+                if self.video_select_label:
+                    self.video_select_label.hide()
+                
+                self.start_subtitle_worker(file_path)
+                
     def stop_playback(self):
         self.player_core.stop()
         self.ui.load_pages.video_widget.setToolTip("点击选择视频/音频文件播放")
+        
+        # 显示视频选择提示标签
+        if self.video_select_label:
+            self.video_select_label.show()
 
     def on_toggle_play_pause(self):
         try:
@@ -452,7 +485,22 @@ class SetupPageVideoPlayer(QObject):
     def on_subtitle_finished(self, success, msg):
         #字幕生成完成回调
         if success:
-            self.player_core.set_subtitle_file(self.temp_srt)
+            # 加载完整的SRT字幕文件
+            try:
+                # 直接使用sub_file属性设置字幕文件
+                self.player_core.mpv_player.sub_file = self.temp_srt
+                
+                # 确保字幕可见
+                self.player_core.mpv_player.sub_visibility = True
+                
+                # 打印调试信息
+                print(f"字幕文件已加载：{self.temp_srt}")
+                print(f"字幕轨道ID：{self.player_core.mpv_player.sub}")
+                    
+            except Exception as e:
+                print(f"字幕轨道设置失败：{e}")
+                QMessageBox.warning(self.ui.load_pages.video_widget, "错误", f"字幕轨道设置失败：{str(e)}")
+            
             QMessageBox.information(self.ui.load_pages.video_widget, "成功", msg)
         else:
             QMessageBox.warning(self.ui.load_pages.video_widget, "失败", msg)

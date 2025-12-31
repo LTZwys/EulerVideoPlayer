@@ -33,16 +33,17 @@ os.environ["QT_FONT_DPI"] = "96"
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        # SETUP MAIN WINDOw
-        # Load widgets from "gui\uis\main_window\ui_main.py"
-        # ///////////////////////////////////////////////////////////////
-        self.ui = UI_MainWindow()
-        self.ui.setup_ui(self)
+        
         # LOAD SETTINGS
         # ///////////////////////////////////////////////////////////////
         settings = Settings()
         self.settings = settings.items
 
+        # SETUP MAIN WINDOW UI
+        # ///////////////////////////////////////////////////////////////
+        self.ui = UI_MainWindow()
+        self.ui.setup_ui(self)
+        
         # SETUP MAIN WINDOW
         # ///////////////////////////////////////////////////////////////
         self.hide_grips = True # Show/Hide resize grips
@@ -61,6 +62,11 @@ class MainWindow(QMainWindow):
         self.tools_setup.setup_tools()
 
 
+        # SET WINDOW TITLE AND ICON
+        # ///////////////////////////////////////////////////////////////
+        self.setWindowTitle("CSCC-UJS-Apps")
+        self.setWindowIcon(QIcon("icon.ico"))
+        
         # SHOW MAIN WINDOW
         # ///////////////////////////////////////////////////////////////
         self.show()
@@ -111,7 +117,7 @@ class MainWindow(QMainWindow):
         # LOAD PAGE TOOLS
         if btn.objectName() == "btn_tools":
             # Select Menu
-            self.ui.left_menu.select_only_one(btn.objectName())
+            self.ui.left_menu.select_only_one_tab(btn.objectName())
 
             # Load Page 3 
             MainFunctions.set_page(self, self.ui.load_pages.page_tool)
@@ -212,9 +218,8 @@ class MainWindow(QMainWindow):
         # SET DRAG POS WINDOW
         self.dragPos = event.globalPosition().toPoint()
 
-
 # SETTINGS WHEN TO START
-# Set the initial class and also additional parameters of the "QApplication" class
+# Set up initial class and also additional parameters of "QApplication" class
 # ///////////////////////////////////////////////////////////////
 if __name__ == "__main__":
     # APPLICATION
