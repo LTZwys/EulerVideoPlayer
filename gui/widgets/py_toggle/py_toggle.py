@@ -1,19 +1,3 @@
-# ///////////////////////////////////////////////////////////////
-#
-# BY: WANDERSON M.PIMENTA
-# PROJECT MADE WITH: Qt Designer and PySide6
-# V: 1.0.0
-#
-# This project can be used freely for all uses, as long as they maintain the
-# respective credits only in the Python scripts, any information in the visual
-# interface (GUI) can be modified without any implication.
-#
-# There are limitations on Qt licenses if you want to use your products
-# commercially, I recommend reading them on the official website:
-# https://doc.qt.io/qtforpython/licenses.html
-#
-# ///////////////////////////////////////////////////////////////
-
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
 from qt_core import *
@@ -21,14 +5,17 @@ from qt_core import *
 class PyToggle(QCheckBox):
     def __init__(
         self,
-        width = 50,
-        bg_color = "#777", 
-        circle_color = "#DDD",
-        active_color = "#00BCFF",
-        animation_curve = QEasingCurve.OutBounce
+        parent=None,  
+        width=50,     
+        bg_color="#777", 
+        circle_color="#DDD",
+        active_color="#00BCFF",
+        animation_curve=QEasingCurve.OutBounce
     ):
-        QCheckBox.__init__(self)
-        self.setFixedSize(width, 28)
+        QCheckBox.__init__(self, parent)
+        
+        self._width = int(width) if isinstance(width, (int, float)) else 50
+        self.setFixedSize(self._width, 28)  
         self.setCursor(Qt.PointingHandCursor)
 
         # COLORS
@@ -62,6 +49,17 @@ class PyToggle(QCheckBox):
     
     def hitButton(self, pos: QPoint):
         return self.contentsRect().contains(pos)
+
+    def set_stylesheet(
+        self,
+        bg_color=None,
+        circle_color=None,
+        active_color=None    
+    ):
+        self._bg_color = bg_color
+        self._circle_color = circle_color
+        self._active_color = active_color
+
 
     def paintEvent(self, e):
         p = QPainter(self)

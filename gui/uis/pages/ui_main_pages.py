@@ -11,15 +11,20 @@
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
 from qt_core import *
+
+from gui.widgets.py_combobox.py_combobox import PyComboBox
 from gui.widgets.py_icon_button.py_icon_button import PyIconButton
+from gui.widgets.py_line_edit.py_line_edit import PyLineEdit
+from gui.widgets.py_plain_text_edit.py_plain_text_edit import PyPlainTextEdit
 from gui.widgets.py_push_button.py_push_button import PyPushButton
 from gui.widgets.py_slider.py_slider import PySlider
+from gui.widgets.py_toggle.py_toggle import PyToggle
 
 class Ui_MainPages(object):
     def setupUi(self, MainPages):
         if not MainPages.objectName():
             MainPages.setObjectName(u"MainPages")
-        MainPages.resize(780, 555)
+        MainPages.resize(895, 705)
         self.main_pages_layout = QVBoxLayout(MainPages)
         self.main_pages_layout.setSpacing(0)
         self.main_pages_layout.setObjectName(u"main_pages_layout")
@@ -230,6 +235,116 @@ class Ui_MainPages(object):
         self.page_tool.setObjectName(u"page_tool")
         self.verticalLayout_5 = QVBoxLayout(self.page_tool)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.temp1_1 = QLabel(self.page_tool)
+        self.temp1_1.setObjectName(u"temp1_1")
+        self.temp1_1.setStyleSheet(u"font: 14pt \"JetBrains Mono\";\n"
+"color: rgb(255, 255, 255);")
+
+        self.horizontalLayout_5.addWidget(self.temp1_1)
+
+        self.lineEdit1 = PyLineEdit(self.page_tool)
+        self.lineEdit1.setObjectName(u"lineEdit1")
+        self.lineEdit1.setMinimumSize(QSize(80, 30))
+
+        self.horizontalLayout_5.addWidget(self.lineEdit1)
+
+        self.horizontalSpacer = QSpacerItem(100, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
+
+        self.verticalLayout_5.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.label_4 = QLabel(self.page_tool)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setStyleSheet(u"font: 14pt \"JetBrains Mono\";\n"
+"color: rgb(255, 255, 255);")
+
+        self.horizontalLayout_6.addWidget(self.label_4)
+
+        self.lineEdit2 = PyLineEdit(self.page_tool)
+        self.lineEdit2.setObjectName(u"lineEdit2")
+        self.lineEdit2.setMinimumSize(QSize(0, 30))
+
+        self.horizontalLayout_6.addWidget(self.lineEdit2)
+
+        self.horizontalSpacer_2 = QSpacerItem(100, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout_5.addLayout(self.horizontalLayout_6)
+
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.label_5 = QLabel(self.page_tool)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setStyleSheet(u"font: 14pt \"JetBrains Mono\";\n"
+"color: rgb(255, 255, 255);")
+
+        self.horizontalLayout_7.addWidget(self.label_5)
+
+        self.lineEdit3 = PyLineEdit(self.page_tool)
+        self.lineEdit3.setObjectName(u"lineEdit3")
+        self.lineEdit3.setMinimumSize(QSize(0, 30))
+
+        self.horizontalLayout_7.addWidget(self.lineEdit3)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_3)
+
+
+        self.verticalLayout_5.addLayout(self.horizontalLayout_7)
+
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.label_8 = QLabel(self.page_tool)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setStyleSheet(u"font: 14pt \"JetBrains Mono\";\n"
+"color: rgb(255, 255, 255);")
+
+        self.horizontalLayout_8.addWidget(self.label_8)
+
+        self.checkBox = PyToggle(self.page_tool)
+        self.checkBox.setObjectName(u"checkBox")
+
+        self.horizontalLayout_8.addWidget(self.checkBox)
+
+        self.horizontalSpacer_4 = QSpacerItem(200, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_4)
+
+        self.horizontalLayout_8.setStretch(1, 4)
+
+        self.verticalLayout_5.addLayout(self.horizontalLayout_8)
+
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.label_9 = QLabel(self.page_tool)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setStyleSheet(u"font: 14pt \"JetBrains Mono\";\n"
+"color: rgb(255, 255, 255);")
+
+        self.horizontalLayout_9.addWidget(self.label_9)
+
+        self.checkBox_2 = PyToggle(self.page_tool)
+        self.checkBox_2.setObjectName(u"checkBox_2")
+
+        self.horizontalLayout_9.addWidget(self.checkBox_2)
+
+        self.horizontalSpacer_5 = QSpacerItem(200, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_5)
+
+        self.horizontalLayout_9.setStretch(1, 4)
+
+        self.verticalLayout_5.addLayout(self.horizontalLayout_9)
+
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.label_2 = QLabel(self.page_tool)
@@ -239,12 +354,24 @@ class Ui_MainPages(object):
 
         self.verticalLayout_2.addWidget(self.label_2)
 
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.pushButton_11 = PyPushButton(self.page_tool)
-        self.pushButton_11.setObjectName(u"pushButton_11")
+        self.pushButton_3 = PyPushButton(self.page_tool)
+        self.pushButton_3.setObjectName(u"pushButton_3")
 
-        self.gridLayout.addWidget(self.pushButton_11, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_3, 0, 2, 1, 1)
+
+        self.pushButton_7 = PyPushButton(self.page_tool)
+        self.pushButton_7.setObjectName(u"pushButton_7")
+
+        self.gridLayout.addWidget(self.pushButton_7, 1, 2, 1, 1)
+
+        self.pushButton_8 = PyPushButton(self.page_tool)
+        self.pushButton_8.setObjectName(u"pushButton_8")
+
+        self.gridLayout.addWidget(self.pushButton_8, 1, 3, 1, 1)
 
         self.pushButton_4 = PyPushButton(self.page_tool)
         self.pushButton_4.setObjectName(u"pushButton_4")
@@ -256,35 +383,15 @@ class Ui_MainPages(object):
 
         self.gridLayout.addWidget(self.pushButton_10, 1, 4, 1, 1)
 
-        self.pushButton_6 = PyPushButton(self.page_tool)
-        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_2 = PyPushButton(self.page_tool)
+        self.pushButton_2.setObjectName(u"pushButton_2")
 
-        self.gridLayout.addWidget(self.pushButton_6, 1, 1, 1, 1)
-
-        self.pushButton_15 = PyPushButton(self.page_tool)
-        self.pushButton_15.setObjectName(u"pushButton_15")
-
-        self.gridLayout.addWidget(self.pushButton_15, 2, 4, 1, 1)
-
-        self.pushButton_12 = PyPushButton(self.page_tool)
-        self.pushButton_12.setObjectName(u"pushButton_12")
-
-        self.gridLayout.addWidget(self.pushButton_12, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_2, 0, 1, 1, 1)
 
         self.pushButton_5 = PyPushButton(self.page_tool)
         self.pushButton_5.setObjectName(u"pushButton_5")
 
         self.gridLayout.addWidget(self.pushButton_5, 1, 0, 1, 1)
-
-        self.pushButton_14 = PyPushButton(self.page_tool)
-        self.pushButton_14.setObjectName(u"pushButton_14")
-
-        self.gridLayout.addWidget(self.pushButton_14, 2, 3, 1, 1)
-
-        self.pushButton_8 = PyPushButton(self.page_tool)
-        self.pushButton_8.setObjectName(u"pushButton_8")
-
-        self.gridLayout.addWidget(self.pushButton_8, 1, 3, 1, 1)
 
         self.pushButton_9 = PyPushButton(self.page_tool)
         self.pushButton_9.setObjectName(u"pushButton_9")
@@ -296,43 +403,69 @@ class Ui_MainPages(object):
 
         self.gridLayout.addWidget(self.pushButton_1, 0, 0, 1, 1)
 
-        self.pushButton_7 = PyPushButton(self.page_tool)
-        self.pushButton_7.setObjectName(u"pushButton_7")
+        self.pushButton_6 = PyPushButton(self.page_tool)
+        self.pushButton_6.setObjectName(u"pushButton_6")
 
-        self.gridLayout.addWidget(self.pushButton_7, 1, 2, 1, 1)
-
-        self.pushButton_13 = PyPushButton(self.page_tool)
-        self.pushButton_13.setObjectName(u"pushButton_13")
-
-        self.gridLayout.addWidget(self.pushButton_13, 2, 2, 1, 1)
-
-        self.pushButton_2 = PyPushButton(self.page_tool)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-
-        self.gridLayout.addWidget(self.pushButton_2, 0, 1, 1, 1)
-
-        self.pushButton_3 = PyPushButton(self.page_tool)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-
-        self.gridLayout.addWidget(self.pushButton_3, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_6, 1, 1, 1, 1)
 
 
-        self.verticalLayout_2.addLayout(self.gridLayout)
+        self.horizontalLayout_12.addLayout(self.gridLayout)
 
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_12.addItem(self.horizontalSpacer_6)
+
+        self.horizontalLayout_12.setStretch(0, 1)
+        self.horizontalLayout_12.setStretch(1, 1)
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_12)
+
+        self.verticalLayout_2.setStretch(1, 7)
+
+        self.verticalLayout_5.addLayout(self.verticalLayout_2)
+
+        self.verticalLayout_7 = QVBoxLayout()
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.label_3 = QLabel(self.page_tool)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setStyleSheet(u"font: 14pt \"JetBrains Mono\";\n"
 "color: rgb(255, 255, 255);")
 
-        self.verticalLayout_2.addWidget(self.label_3)
+        self.horizontalLayout_10.addWidget(self.label_3)
 
-        self.plainTextEdit = QPlainTextEdit(self.page_tool)
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.label_7 = QLabel(self.page_tool)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setStyleSheet(u"font: 14pt \"JetBrains Mono\";\n"
+"color: rgb(255, 255, 255);")
+
+        self.horizontalLayout_11.addWidget(self.label_7)
+
+        self.comboBox = PyComboBox(self.page_tool)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setMinimumSize(QSize(0, 30))
+
+        self.horizontalLayout_11.addWidget(self.comboBox)
+
+
+        self.horizontalLayout_10.addLayout(self.horizontalLayout_11)
+
+
+        self.verticalLayout_7.addLayout(self.horizontalLayout_10)
+
+        self.plainTextEdit = PyPlainTextEdit(self.page_tool)
         self.plainTextEdit.setObjectName(u"plainTextEdit")
 
-        self.verticalLayout_2.addWidget(self.plainTextEdit)
+        self.verticalLayout_7.addWidget(self.plainTextEdit)
 
 
-        self.verticalLayout_5.addLayout(self.verticalLayout_2)
+        self.verticalLayout_5.addLayout(self.verticalLayout_7)
 
         self.pages.addWidget(self.page_tool)
 
@@ -341,7 +474,7 @@ class Ui_MainPages(object):
 
         self.retranslateUi(MainPages)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainPages)
@@ -358,22 +491,32 @@ class Ui_MainPages(object):
         self.next_btn.setText("")
         self.progress_label.setText(QCoreApplication.translate("MainPages", u"00:00", None))
         self.volume_btn.setText("")
+        self.temp1_1.setText(QCoreApplication.translate("MainPages", u"\uff1f\uff1f\uff1f\uff1f\uff1f\uff1f", None))
+        self.lineEdit1.setText(QCoreApplication.translate("MainPages", u"\uff1f\uff1f\uff1f\uff1f\uff1f\uff1f", None))
+        self.label_4.setText(QCoreApplication.translate("MainPages", u"\uff1f\uff1f\uff1f\uff1f\uff1f\uff1f", None))
+        self.lineEdit2.setText(QCoreApplication.translate("MainPages", u"?????????????", None))
+        self.label_5.setText(QCoreApplication.translate("MainPages", u"\uff1f\uff1f\uff1f\uff1f\uff1f\uff1f", None))
+        self.lineEdit3.setText(QCoreApplication.translate("MainPages", u"????????????", None))
+        self.label_8.setText(QCoreApplication.translate("MainPages", u"\uff1f\uff1f\uff1f\uff1f\uff1f\uff1f", None))
+        self.checkBox.setText(QCoreApplication.translate("MainPages", u"????????", None))
+        self.label_9.setText(QCoreApplication.translate("MainPages", u"\uff1f\uff1f\uff1f\uff1f\uff1f\uff1f", None))
+        self.checkBox_2.setText(QCoreApplication.translate("MainPages", u"????????", None))
         self.label_2.setText(QCoreApplication.translate("MainPages", u"\u5173\u952e\u8bcd\u63d0\u53d6", None))
-        self.pushButton_11.setText("")
+        self.pushButton_3.setText("")
+        self.pushButton_7.setText("")
+        self.pushButton_8.setText("")
         self.pushButton_4.setText("")
         self.pushButton_10.setText("")
-        self.pushButton_6.setText("")
-        self.pushButton_15.setText("")
-        self.pushButton_12.setText("")
+        self.pushButton_2.setText("")
         self.pushButton_5.setText("")
-        self.pushButton_14.setText("")
-        self.pushButton_8.setText("")
         self.pushButton_9.setText("")
         self.pushButton_1.setText("")
-        self.pushButton_7.setText("")
-        self.pushButton_13.setText("")
-        self.pushButton_2.setText("")
-        self.pushButton_3.setText("")
+        self.pushButton_6.setText("")
         self.label_3.setText(QCoreApplication.translate("MainPages", u"\u6587\u672c\u6458\u8981", None))
+        self.label_7.setText(QCoreApplication.translate("MainPages", u"\u6982\u62ec\u7cbe\u5ea6", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("MainPages", u"\u7c97\u7565", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("MainPages", u"\u7b80\u5355", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("MainPages", u"\u8be6\u7ec6", None))
+
     # retranslateUi
 

@@ -150,35 +150,35 @@ class SetupPageVideoPlayer(QObject):
 # 悬浮窗口字幕
 # ///////////////////////////////////////////////////////////////
 # 还没调试好，字幕尚不能跟随video_widget移动
-        self.subtitle_popup = QWidget()
-        self.subtitle_popup.setWindowFlags(
-            Qt.Popup | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.SubWindow
-        )
-        self.subtitle_popup.setAttribute(Qt.WA_TranslucentBackground)
-        self.subtitle_popup.setStyleSheet("background: transparent;")
+        # self.subtitle_popup = QWidget()
+        # self.subtitle_popup.setWindowFlags(
+        #     Qt.Popup | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.SubWindow
+        # )
+        # self.subtitle_popup.setAttribute(Qt.WA_TranslucentBackground)
+        # self.subtitle_popup.setStyleSheet("background: transparent;")
 
-        self.subtitle_label = QLabel(self.subtitle_popup)
-        self.subtitle_label.setAlignment(Qt.AlignCenter)
-        self.subtitle_label.setStyleSheet("""
-            QLabel {
-                color: white;
-                font-size: 18px;
-                background: rgba(0,0,0,0.5);
-                padding: 8px 16px;
-                border-radius: 8px;
-                min-width: 200px;
-                max-width: 600px;
-                white-space: pre-wrap; 
-                text-align: center;    
-            }
-        """)
-        # 布局
-        subtitle_layout = QVBoxLayout(self.subtitle_popup)
-        subtitle_layout.addWidget(self.subtitle_label)
-        subtitle_layout.setContentsMargins(0, 0, 0, 0)
+        # self.subtitle_label = QLabel(self.subtitle_popup)
+        # self.subtitle_label.setAlignment(Qt.AlignCenter)
+        # self.subtitle_label.setStyleSheet("""
+        #     QLabel {
+        #         color: white;
+        #         font-size: 18px;
+        #         background: rgba(0,0,0,0.5);
+        #         padding: 8px 16px;
+        #         border-radius: 8px;
+        #         min-width: 200px;
+        #         max-width: 600px;
+        #         white-space: pre-wrap; 
+        #         text-align: center;    
+        #     }
+        # """)
+        # # 布局
+        # subtitle_layout = QVBoxLayout(self.subtitle_popup)
+        # subtitle_layout.addWidget(self.subtitle_label)
+        # subtitle_layout.setContentsMargins(0, 0, 0, 0)
 
-        # 初始测试文本
-        self.set_subtitle_text("测试字幕 - 显示在视频底部居中")
+        # # 初始测试文本
+        # self.set_subtitle_text("测试字幕 - 显示在视频底部居中")
 
 
         # SET CONNECTS

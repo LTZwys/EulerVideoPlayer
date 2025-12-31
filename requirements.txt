@@ -1,0 +1,8 @@
+jieba==0.42.1
+openai_whisper==20250625
+OpenCC==1.1.9
+pyside6==6.10.1
+pyside6_addons==6.10.1
+pyside6_essentials==6.10.1
+python-mpv==1.0.8
+textrank4zh==0.3

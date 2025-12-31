@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>780</width>
-    <height>555</height>
+    <width>895</width>
+    <height>705</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
    <item>
     <widget class="QStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page_home">
       <property name="styleSheet">
@@ -388,7 +388,200 @@ color: rgb(255, 255, 255);</string>
      <widget class="QWidget" name="page_tool">
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,0,0">
+         <item>
+          <widget class="QLabel" name="temp1_1">
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>？？？？？？</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="PyLineEdit" name="lineEdit1">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>？？？？？？</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>100</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>？？？？？？</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="PyLineEdit" name="lineEdit2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>?????????????</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>100</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>？？？？？？</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="PyLineEdit" name="lineEdit3">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>????????????</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,4,0">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>？？？？？？</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="PyToggle" name="checkBox">
+           <property name="text">
+            <string>????????</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>200</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,4,0">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>？？？？？？</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="PyToggle" name="checkBox_2">
+           <property name="text">
+            <string>????????</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>200</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,7">
          <item>
           <widget class="QLabel" name="label_2">
            <property name="styleSheet">
@@ -401,127 +594,157 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item>
-          <layout class="QGridLayout" name="gridLayout">
-           <item row="2" column="0">
-            <widget class="PyPushButton" name="pushButton_11">
+          <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="1,1">
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="2">
+              <widget class="PyPushButton" name="pushButton_3">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="PyPushButton" name="pushButton_7">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="PyPushButton" name="pushButton_8">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="PyPushButton" name="pushButton_4">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="4">
+              <widget class="PyPushButton" name="pushButton_10">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="PyPushButton" name="pushButton_2">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="PyPushButton" name="pushButton_5">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4">
+              <widget class="PyPushButton" name="pushButton_9">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="PyPushButton" name="pushButton_1">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="PyPushButton" name="pushButton_6">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="styleSheet">
+              <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
+color: rgb(255, 255, 255);</string>
+             </property>
              <property name="text">
-              <string/>
+              <string>文本摘要</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <widget class="PyPushButton" name="pushButton_4">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="PyPushButton" name="pushButton_10">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="PyPushButton" name="pushButton_6">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="4">
-            <widget class="PyPushButton" name="pushButton_15">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="PyPushButton" name="pushButton_12">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="PyPushButton" name="pushButton_5">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="PyPushButton" name="pushButton_14">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
-            <widget class="PyPushButton" name="pushButton_8">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="4">
-            <widget class="PyPushButton" name="pushButton_9">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="PyPushButton" name="pushButton_1">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="PyPushButton" name="pushButton_7">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="PyPushButton" name="pushButton_13">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="PyPushButton" name="pushButton_2">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="PyPushButton" name="pushButton_3">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="styleSheet">
+                <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
+color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>概括精度</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="PyComboBox" name="comboBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <item>
+                <property name="text">
+                 <string>粗略</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>简单</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>详细</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QLabel" name="label_3">
-           <property name="styleSheet">
-            <string notr="true">font: 14pt &quot;JetBrains Mono&quot;;
-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>文本摘要</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit"/>
+          <widget class="PyPlainTextEdit" name="plainTextEdit"/>
          </item>
         </layout>
        </item>
@@ -545,7 +768,27 @@ color: rgb(255, 255, 255);</string>
   <customwidget>
    <class>PyPushButton</class>
    <extends>QPushButton</extends>
-   <header location="global">gui.widgets.py_push_button.py_push_button</header>
+   <header>gui.widgets.py_push_button.py_push_button</header>
+  </customwidget>
+  <customwidget>
+   <class>PyToggle</class>
+   <extends>QCheckBox</extends>
+   <header>gui.widgets.py_toggle.py_toggle</header>
+  </customwidget>
+  <customwidget>
+   <class>PyLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>gui.widgets.py_line_edit.py_line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>PyComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">gui.widgets.py_combobox.py_combobox</header>
+  </customwidget>
+  <customwidget>
+   <class>PyPlainTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>gui.widgets.py_plain_text_edit.py_plain_text_edit</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -3,7 +3,6 @@
 from gui.uis.windows.main_window.functions_main_window import *
 import sys
 import os
-
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
 from qt_core import *
@@ -18,7 +17,8 @@ from gui.core.json_settings import Settings
 from gui.uis.windows.main_window import *
 # PAGE VIDEOPLAYER
 from gui.uis.windows.page_videoplayer.setup_page_videoplayer import SetupPageVideoPlayer
-
+# PAGE TOOLS
+from gui.uis.windows.page_tools.setup_page_tools import SetupPageTools
 # IMPORT PY ONE DARK WIDGETS
 # ///////////////////////////////////////////////////////////////
 from gui.widgets import *
@@ -53,8 +53,14 @@ class MainWindow(QMainWindow):
         self.video_player_setup=SetupPageVideoPlayer()
         self.video_player_setup.ui=self.ui
         self.video_player_setup.setup_player()
-  
-        self.setup_push_buttons_style()
+
+        # SETUP PAGE_VIDEOPLAYER
+        # ///////////////////////////////////////////////////////////////  
+        self.tools_setup=SetupPageTools()
+        self.tools_setup.ui=self.ui
+        self.tools_setup.setup_tools()
+
+
         # SHOW MAIN WINDOW
         # ///////////////////////////////////////////////////////////////
         self.show()
@@ -206,32 +212,6 @@ class MainWindow(QMainWindow):
         # SET DRAG POS WINDOW
         self.dragPos = event.globalPosition().toPoint()
 
-    # WAITING
-    def setup_push_buttons_style(self):
-            # 定义通用样式参数
-            btn_style_params = {
-                "radius": 10,
-                "color": self.themes["app_color"]["text_foreground"],
-                "bg_color": self.themes["app_color"]["dark_one"],
-                "bg_color_hover": self.themes["app_color"]["dark_three"],
-                "bg_color_pressed": self.themes["app_color"]["dark_four"]
-            }
-            # 遍历1-15的按钮，批量设置样式和最小高度
-            for btn_num in range(1, 16):
-                # 拼接按钮属性名（pushButton1, pushButton2...pushButton15）
-                btn_attr_name = f"pushButton_{btn_num}"
-                # 检查按钮是否存在，避免属性不存在报错
-                if hasattr(self.ui.load_pages, btn_attr_name):
-                    # 获取当前按钮对象
-                    btn = getattr(self.ui.load_pages, btn_attr_name)
-                    # 设置样式
-                    btn.set_style(**btn_style_params)
-                    # 设置最小高度
-                    btn.setMinimumHeight(40)
-                    btn.hide()
-                else:
-                    # 可选：打印不存在的按钮名，方便调试
-                    print(f"Warning: Button {btn_attr_name} not found in load_pages!")
 
 # SETTINGS WHEN TO START
 # Set the initial class and also additional parameters of the "QApplication" class
