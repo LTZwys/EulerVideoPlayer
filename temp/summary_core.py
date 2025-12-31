@@ -1,7 +1,6 @@
 import codecs
 from textrank4zh import TextRank4Keyword, TextRank4Sentence
 from PySide6.QtCore import QObject, Signal
-from importlib import reload
 import swapsub
 
 class summary(QObject):

@@ -1,4 +1,4 @@
-import os,sys
+import os
 import re
 script_dir = os.path.dirname(os.path.abspath(__file__))
 os.environ["PATH"] = script_dir + os.pathsep + os.environ["PATH"]
