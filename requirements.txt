@@ -6,3 +6,4 @@ pyside6_addons==6.10.1
 pyside6_essentials==6.10.1
 python-mpv==1.0.8
 textrank4zh==0.3
+funasr==1.2.9
